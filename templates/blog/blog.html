@@ -9,8 +9,8 @@
     <!-- Heading -->
     {% for post in posts %}
 
-	<div class="card h-100">
-		<img src="{{ post.imagen.url }}" class="card-img-top" alt="..." style="max-width: 200px; height: auto; ">
+	<div class="card h-100" style="padding: 10px;">
+		<img src="{{ post.imagen.url }}" class="card-img-top" alt="..." style="max-width: 300px; height: auto; ">
 		<div class="card-body">
 		  <h5 class="card-title">{{ post.titulo }}</h5>
 		  <p class="card-text">{{ post.contenido }}</p>
