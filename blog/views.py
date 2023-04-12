@@ -5,7 +5,9 @@ from blog.models import Post, Categoria
 
 def blog(request):
     posts = Post.objects.all()
-    return render(request, 'blog/blog.html', {"posts":posts})
+    categorias = Categoria.objects.all().order_by('nombre')
+    ctx = {'posts':posts, 'categorias':categorias}
+    return render(request, 'blog/blog.html', ctx)
 
 def categoria(request, categoria_id):
     categoria = Categoria.objects.get(id=categoria_id)
