@@ -5,8 +5,8 @@
 
 {% block content %}
 
-<<div class="row row-cols-1 row-cols-md-3 g-4">
-    <!-- Heading -->
+<div class="row justify-content-center"> 
+
     {% for post in posts %}
 
 	<div class="card h-100" style="padding: 10px;">
@@ -23,12 +23,14 @@
 </div>
 
     <section>
+		<br>
         <div style="width: 75%; margin:auto; text-align: center; color: white;">
             Categorias:
                 {% for categoria in categorias %}
                     <a class="linksCategorias" href="{% url 'categoria' categoria.id %}">{{ categoria.nombre }} &nbsp;&nbsp;&nbsp;</a>
                 {% endfor %}
         </div>
+		<br>
     </section>
 
 {% endblock %}
