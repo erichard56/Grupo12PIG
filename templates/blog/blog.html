@@ -1,36 +1,33 @@
-
 {% extends 'pig/base.html' %}
-
-<!-- {% load static %} -->
 
 {% block content %}
 
-<div class="row justify-content-center"> 
+<div class="row justify-content-center">
 
-    {% for post in posts %}
+	{% for post in posts %}
 
 	<div class="card h-100" style="padding: 10px;">
 		<img src="{{ post.imagen.url }}" class="card-img-top" alt="..." style="max-width: 300px; height: auto; ">
 		<div class="card-body">
-		  <h5 class="card-title">{{ post.titulo }}</h5>
-		  <p class="card-text">{{ post.contenido }}</p>
+			<h5 class="card-title">{{ post.titulo }}</h5>
+			<p class="card-text">{{ post.contenido }}</p>
 		</div>
 		<span class="card-footer text-muted">Autor: {{ post.autor }}</span>
 	</div>
-	
-    {% endfor %}
+
+	{% endfor %}
 
 </div>
 
-    <section>
-		<br>
-        <div style="width: 75%; margin:auto; text-align: center; color: white;">
-            Categorias:
-                {% for categoria in categorias %}
-                    <a class="linksCategorias" href="{% url 'categoria' categoria.id %}">{{ categoria.nombre }} &nbsp;&nbsp;&nbsp;</a>
-                {% endfor %}
-        </div>
-		<br>
-    </section>
+<section>
+	<br>
+	<div style="width: 75%; margin:auto; text-align: center; color: white;">
+		Categorias:
+		{% for categoria in categorias %}
+		<a class="linksCategorias" href="{% url 'categoria' categoria.id %}">{{ categoria.nombre }} &nbsp;&nbsp;&nbsp;</a>
+		{% endfor %}
+	</div>
+	<br>
+</section>
 
 {% endblock %}

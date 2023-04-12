@@ -1,24 +1,23 @@
-
 {% extends 'pig/base.html' %}
-
-<!-- {% load static %} -->
 
 {% block content %}
 
-<div style="color: white;" class="contenedorFormulario"><p>  
+<div style="color: white;" class="contenedorFormulario">
+	<p>
+		{% if "valido" in request.GET %}
+			<p>Informacion enviada correctamente. Gracias</p>
+		{% else %}
+			<p>Fallo al enviar la informacion. Pruebe mas tarde</p>
+		{% endif %}
 
-    {% if "valido" in request.GET %}
-        <p>Informacion enviada correctamente. Gracias</p>
-    {% else %}
-        <p>Fallo al enviar la informacion. Pruebe mas tarde</p>
-    {% endif %}
-
-    <form action="" method="POST" style="text-align: center;">{% csrf_token %}
-        <table style="color: white; margin: 20px auto">
-            {{ miFormulario.as_table }}
-        </table>
-        <input type="submit" value="Enviar" style="width: 150px;">
-    </form>
-</p></div>
+		<form action="" method="POST" style="text-align: center;">
+			{% csrf_token %}
+			<table style="color: white; margin: 20px auto">
+				{{ miFormulario.as_table }}
+			</table>
+			<input type="submit" value="Enviar" style="width: 150px;">
+		</form>
+	</p>
+</div>
 
 {% endblock %}

@@ -15,9 +15,7 @@ def contacto(request):
             contenido = request.POST.get("contenido")
 
             email = EmailMessage('Mensaje desde App Django', 
-                'El usuario con nombre {} con la direccion {} escribe lo siguiente: \n\n{}'.format(nombre, email, contenido),
-                '', ['enrique.richard@gmail.com'], 
-                reply_to=[email])
+                'El usuario con nombre {} con la direccion {} escribe lo siguiente: \n\n{}'.format(nombre, email, contenido), '', ['enrique.richard@gmail.com'], reply_to=[email])
             try:
                 email.send()
                 return redirect('/contacto/?valido')

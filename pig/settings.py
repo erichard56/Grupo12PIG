@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'carro',
     'autenticacion',
     'pedidos',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
