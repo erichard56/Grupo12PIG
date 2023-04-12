@@ -3,8 +3,6 @@
 
 <!-- {% load static %} -->
 
-{% load crispy_forms_tags %}
-
 {% block content %}
 
 <form method="post" action="" style="color: white">{% csrf_token %}
@@ -19,7 +17,7 @@
             <br><br>
         {% endif %}
         
-        {{ form | crispy }}
+        {{ form }}
 
         <button type="submit" class="btn btn-success">Login</button>
     </div>
