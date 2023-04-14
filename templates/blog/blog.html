@@ -2,20 +2,25 @@
 
 {% block content %}
 
-<div class="row justify-content-center">
+<div class="container">
 
+	<div class="row">
 	{% for post in posts %}
 
-	<div class="card h-100" style="padding: 10px;">
-		<img src="{{ post.imagen.url }}" class="card-img-top" alt="..." style="max-width: 300px; height: auto; ">
-		<div class="card-body">
-			<h5 class="card-title">{{ post.titulo }}</h5>
-			<p class="card-text">{{ post.contenido }}</p>
+		<div class="col-md-3">
+			<div class="card" style="width: 100%; margin: 5px 5px">
+				<img src="{{ post.imagen.url }}" class="card-img-top" alt="..." style="max-width: 300px; height: auto; ">
+				<div class="card-body" style="text-align: center;">
+					<h7 class="card-title">{{ post.titulo }}</h7>
+					<p class="card-text">{{ post.contenido }}</p>
+				</div>
+				<div class="card-footer text-center">
+					<span class="card-footer text-muted">Autor: {{ post.autor }}</span>
+				</div>
+			</div>
 		</div>
-		<span class="card-footer text-muted">Autor: {{ post.autor }}</span>
-	</div>
-
 	{% endfor %}
+	</div>
 
 </div>
 
