@@ -6,9 +6,7 @@
 	{% csrf_token %}
 
 	<div style="width: 75%; margin: auto; color:white; margin: 20px auto;">
-		<table style="color: white; margin: 5px auto">
-			{{ form.as_table }}
-		</table>
+		{{ form.as_p }}
 		<button type="submit" class="btn btn-success" style="width: 150px;">Registrate</button>
 	</div>
 </form>
