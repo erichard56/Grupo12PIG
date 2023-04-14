@@ -26,6 +26,7 @@
 		{% for categoria in categorias %}
 		<a class="linksCategorias" href="{% url 'categoria' categoria.id %}">{{ categoria.nombre }} &nbsp;&nbsp;&nbsp;</a>
 		{% endfor %}
+		<a href="{% url 'newpost' %}">Nuevo Post</a>
 	</div>
 	<br>
 </section>

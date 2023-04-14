@@ -1,0 +1,29 @@
+{% extends 'pig/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div style="color: white;" class="contenedorFormulario">
+
+	<form method = 'POST' enctype="multipart/form-data" style="text-align: center;">
+		{% csrf_token %}
+		<table style="color: white; margin: 20px auto">
+			{{userform.as_table}}
+		</table>
+		<input type="submit" value = "Enviar"  style="width: 150px;"/>
+	</form>
+
+</div>
+
+{% endblock %}
+
+
+<!DOCTYPE html>
+
+<html>
+<body>
+ <h1> Página de registro </ h1>
+
+</body>
+</html>
