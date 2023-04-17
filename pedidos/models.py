@@ -14,12 +14,6 @@ class Pedidos(models.Model):
 	def __str__(self):
 		return f'{str(self.id)} / {self.user}'
 
-	@property
-	def total(self):
-		return self.lineapedido_set.aggregate(
-				total = Sum(F('precio') * F('cantidad'), output_field = FloatField())
-		)['total']
-
 	class Meta:
 		db_table = 'pedidos'
 		verbose_name = 'pedido'
