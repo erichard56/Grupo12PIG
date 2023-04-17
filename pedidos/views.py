@@ -39,5 +39,5 @@ def enviar_mail(**kwargs):
 	mensaje_texto = strip_tags(mensaje)
 	from_email = 'enrique_richard@hotmail.com'
 	to = kwargs.get('emailusuario')
-	send_mail(asunto, mensaje_texto, from_email, [to], html_message = mensaje)
+	send_mail(asunto, mensaje_texto, from_email, to, html_message = mensaje)
 	return redirect('../tienda')
