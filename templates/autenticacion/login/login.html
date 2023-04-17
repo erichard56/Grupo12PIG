@@ -1,4 +1,5 @@
 {% extends 'pig/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -16,7 +17,7 @@
 		{% endif %}
 
 		<table style="color: white; margin: 20px auto">
-			{{ form.as_table }}
+			{{ form|crispy }}
 		</table>
 		<button type="submit" class="btn btn-success" style="width: 150px;">Login</button>
 	</div>
