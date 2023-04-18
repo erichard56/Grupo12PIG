@@ -7,11 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    
-    Hola {{ nombreusuario}} <br>
-    N° de pedido: {{pedido.id}} <br>
-    Email del usuario: {{ emailusuario }} <br>
-    lineas de pedido: {{ lineas_pedido }}
-
+    <h1>Sr. {{ nombreusuario|capfirst }} </h3> 
+    <h2>Pedido N° {{pedido.id}}</h2>
+    <h3>Detalle:</h3> 
+    <h3>
+        <ul>
+        {% for linea in lineas_pedido %}
+            <li> {{ linea }} </li>
+        {% endfor %}
+        </ul>
+    </h3>
 </body>
 </html>
