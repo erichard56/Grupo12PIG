@@ -15,12 +15,7 @@ def procesar_pedido(request):
 	carro = Carro(request)
 	lineas_pedido = list()
 	for key, value in carro.carro.items():
-		lineas_pedido.append(LineaPedido(
-			producto_id = key,
-			cantidad = value['cantidad'],
-			user = request.user,
-			pedido = pedido))
-	LineaPedido.objects.bulk_create(lineas_pedido)
+		lineas_pedido.append([key, value])
 
 	enviar_mail(pedido = pedido, 
 		lineas_pedido = lineas_pedido, 

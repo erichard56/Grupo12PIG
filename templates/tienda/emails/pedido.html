@@ -10,12 +10,26 @@
     <h1>Sr. {{ nombreusuario|capfirst }} </h3> 
     <h2>Pedido N° {{pedido.id}}</h2>
     <h3>Detalle:</h3> 
-    <h3>
-        <ul>
-        {% for linea in lineas_pedido %}
-            <li> {{ linea }} </li>
-        {% endfor %}
-        </ul>
-    </h3>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for linea in lineas_pedido %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{linea.1.nombre}}</td>
+                <td>{{linea.1.cantidad}}</td>
+                <td>{{linea.1.precio}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Muchas gracias por su compra</h2>
 </body>
 </html>
