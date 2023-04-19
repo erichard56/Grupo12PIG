@@ -4,7 +4,7 @@ PIG
 Proyecto de Integración del curso Django de Codo a Codo
 
 Descripción
-Este proyecto permite es una Gestión de Pedidos, con el agregado de una pantalla de Servicios, una de Compra con carrito y un Blog.
+Este proyecto es una Gestión de Pedidos, con el agregado de una pantalla de Servicios, una de Compra con carrito y un Blog.
 
 Instalación
 Utiliza BD Postgres
