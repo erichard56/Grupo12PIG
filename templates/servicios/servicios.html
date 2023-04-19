@@ -4,21 +4,20 @@
 {% block content %}
 
 	{% for servicio in servicios %}
-
-    <section class="page-section clearfix">
-        <div class="container">
-            <div class="intro">
-                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ servicio.imagen.url }}" alt=""  style="width:40%">
-                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                    <h2 class="section-heading mb-4" >
-                        <span class="section-heading-lower" style="color:lightgreen">{{ servicio.titulo }}</span>
-                        <span class="section-heading-upper">{{ servicio.contenido }}</span>
-                    </h2>
-                </div>
+    <div class="card mb-3" style="max-width: 90%;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{ servicio.imagen.url }}" class="card-img" alt="..." style="width:60%;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title">{{ servicio.titulo }}</h3>
+              <p class="card-text"> <h5> {{  servicio.contenido }}</h5></p>
+              <p class="card-text"><small class="text-muted">Creado {{servicio.created}} / Modificado {{servicio.updated}}</small></p>
             </div>
+          </div>
         </div>
-    </section>
-
-    {% endfor %}
-
+      </div>
+      {% endfor %}
+    
 {% endblock %}
