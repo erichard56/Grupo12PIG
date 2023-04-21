@@ -4,16 +4,10 @@ from .models import Categoria
 
 class NewblogForm(forms.Form):
     titulo = forms.CharField(label='Titulo', max_length=50)
-    contenido = forms.CharField(label='Contenido', max_length=50)
+    contenido = forms.CharField(max_length=500, 
+        			widget=forms.Textarea(
+        				attrs={'name':'Contenido'})
+				)
     imagen = forms.ImageField(label='Imagen', max_length=50)
     autor = forms.ModelChoiceField(label='Autor', queryset=User.objects.all())
     categorias = forms.ModelChoiceField(label='Categoria', queryset=Categoria.objects.all())
-
-#color = forms.ModelChoiceField(queryset=Color.objects.all())
-	# titulo = models.CharField(max_length=50)
-	# contenido = models.CharField(max_length=50)
-	# imagen = models.ImageField(upload_to='blog', null=True, blank=True)
-	# autor = models.ForeignKey(User, on_delete=models.CASCADE)
-	# categorias = models.ManyToManyField(Categoria)
-	# created = models.DateTimeField(auto_now_add=True)
-	# updated = models.DateTimeField(auto_now_add=True)
