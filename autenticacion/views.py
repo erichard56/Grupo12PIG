@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django import forms
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
@@ -7,14 +9,22 @@ from django.contrib import messages
 
 # Create your views here.
 
+class UserCreationFormWithEmail(UserCreationForm):
+	email = forms.EmailField(required = True,
+			  help_text = 'Requerido. 254 caracteres como máximo y debe ser un email válido')
+	
+	class Meta:
+		model = User
+		fields = ('username', 'email', 'password1', 'password2')
+
 class VRegistro(View):
 
 	def get(self, request):
-		form = UserCreationForm()
+		form = UserCreationFormWithEmail()
 		return render(request, 'autenticacion/registro/registro.html', {'form':form})
 
 	def post(self, request):
-		form = UserCreationForm(request.POST)
+		form = UserCreationFormWithEmail(request.POST)
 		if (form.is_valid()):
 			usuario = form.save()
 			login(request, usuario)
