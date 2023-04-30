@@ -1,6 +1,6 @@
-# PIG
+# GRUPO12PIG
 
-PIG
+GRUPO12PIG
 Proyecto de Integración del curso Django de Codo a Codo
 
 Descripción

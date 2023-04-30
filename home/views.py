@@ -5,4 +5,4 @@ from carro.carro import Carro
 
 def home(request):
 	carro = Carro(request)
-	return render(request, 'pig/home.html')
+	return render(request, 'grupo12pig/home.html')
