@@ -26,13 +26,19 @@ class VRegistro(View):
 	def post(self, request):
 		form = UserCreationFormWithEmail(request.POST)
 		if (form.is_valid()):
-			usuario = form.save()
-			login(request, usuario)
-			return redirect('Home')
-		else:
-			for msg in form.error_messages:
-				messages.error(request, form.error_messages[msg])
-			return render(request, 'autenticacion/registro/registro.html', {'form':form})
+			eml = request.POST['email']
+			user = User.objects.all().filter(email = eml)
+			if (not user):
+				print('email no usado')
+				usuario = form.save()
+				login(request, usuario)
+				return redirect('Home')
+			else:
+				messages.add_message(request, messages.WARNING, 'email ya utilizado')
+	# else:
+		for msg in form.error_messages:
+			messages.error(request, form.error_messages[msg])
+		return render(request, 'autenticacion/registro/registro.html', {'form':form})
 
 def cerrar_sesion(request):
 	logout(request)
