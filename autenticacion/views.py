@@ -29,7 +29,6 @@ class VRegistro(View):
 			eml = request.POST['email']
 			user = User.objects.all().filter(email = eml)
 			if (not user):
-				print('email no usado')
 				usuario = form.save()
 				login(request, usuario)
 				return redirect('Home')
@@ -47,18 +46,25 @@ def cerrar_sesion(request):
 def logear(request):
 	if (request.method == 'POST'):
 		form = AuthenticationForm(request, data=request.POST)
-		if (form.is_valid()):
-			nombre_usuario = form.cleaned_data.get('username')
-			contra = form.cleaned_data.get('password')
-			usuario = authenticate(username = nombre_usuario, password = contra)
-			if (usuario is  not None):
-				login(request, usuario)
-				return redirect('Home')
+		existe_usuario = User.objects.filter(username = request.POST['username']).exists()
+		if (existe_usuario):
+			user = User.objects.all().filter(username = request.POST['username'])
+			if(user[0].is_active):
+				if (form.is_valid()):
+					nombre_usuario = form.cleaned_data.get('username')
+					contra = form.cleaned_data.get('password')
+					usuario = authenticate(username = nombre_usuario, password = contra)
+					if (usuario is  not None):
+						login(request, usuario)
+						return redirect('Home')
+					else:
+						messages.error(request, 'usuario no valido')
+				else:
+					messages.error(request, 'Informacion incorrecta')
 			else:
-				messages.error(request, 'usuario no valido')
+				messages.error(request, 'El usuario no esta activo. Avise al Administrador')
 		else:
-			messages.error(request, 'Informacion incorrecta')
-
-	form = AuthenticationForm()
-	return render(request, 'autenticacion/login/login.html', {'form':form})
-
+			messages.error(request, 'El usuario no existe')
+	
+		form = AuthenticationForm()
+		return render(request, 'autenticacion/login/login.html', {'form':form})
