@@ -54,7 +54,7 @@ def logear(request):
 					nombre_usuario = form.cleaned_data.get('username')
 					contra = form.cleaned_data.get('password')
 					usuario = authenticate(username = nombre_usuario, password = contra)
-					if (usuario is  not None):
+					if (usuario is not None):
 						login(request, usuario)
 						return redirect('Home')
 					else:
@@ -66,5 +66,5 @@ def logear(request):
 		else:
 			messages.error(request, 'El usuario no existe')
 	
-		form = AuthenticationForm()
-		return render(request, 'autenticacion/login/login.html', {'form':form})
+	form = AuthenticationForm()
+	return render(request, 'autenticacion/login/login.html', {'form':form})
