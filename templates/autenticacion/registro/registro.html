@@ -3,16 +3,16 @@
 
 {% block content %}
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
 <form method="post" action="" style="color: white" class="contenedorFormulario">
 	{% csrf_token %}
+
+	{% if messages %}
+	<ul class="messages">
+		{% for message in messages %}
+		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
 
 	<div style="width: 75%; margin: auto; color:white; margin: 20px auto;">
 		{{ form|crispy }}
