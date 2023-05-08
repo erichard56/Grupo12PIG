@@ -30,7 +30,10 @@ class VRegistro(View):
 			user = User.objects.all().filter(email = eml)
 			if (not user):
 				usuario = form.save()
-				login(request, usuario)
+				usuario.is_active = False
+				usuario.save()
+				# login(request, usuario)
+				messages.error(request,'Espere a ser habilitado por el Administrador')
 				return redirect('Home')
 			else:
 				messages.add_message(request, messages.WARNING, 'email ya utilizado')
