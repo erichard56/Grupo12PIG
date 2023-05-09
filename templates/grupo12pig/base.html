@@ -42,6 +42,9 @@
 						<li class="nav-item px-lg-4">
 							<a class="nav-link text-uppercase text-expanded" href="#" style="color: white">{{ user.username }}</a>
 						</li>
+						{% if user.username == 'erichard' %}
+							<a class="nav-link text-uppercase text-expanded" href="{% url 'act_des' %}" style="color: white">Activar</a>
+						{% endif %}
 						<li class="nav-item px-lg-4">
 							<a class="nav-link text-uppercase text-expanded" href="{% url 'cerrar_sesion' %} "style="color: white">Logout</a>
 						</li>

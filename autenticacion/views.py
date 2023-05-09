@@ -71,3 +71,18 @@ def logear(request):
 	
 	form = AuthenticationForm()
 	return render(request, 'autenticacion/login/login.html', {'form':form})
+
+def act_des(request):
+	users = User.objects.all().order_by('username')
+	ctx = {'users':users}
+	return render(request, 'autenticacion/act_des/act_des.html', ctx)
+
+def activa(request, fnc, id):
+	userf = User.objects.all().filter(id = id)
+	user = userf[0]
+	if (fnc == 'a'):
+		user.is_active = True
+	else:
+		user.is_active = False
+	user.save()
+	return redirect('act_des')
