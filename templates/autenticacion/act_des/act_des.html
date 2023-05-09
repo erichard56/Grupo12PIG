@@ -14,7 +14,7 @@
 	</ul>
 	{% endif %}
 
-<div style="width: 75%; margin: auto; color:white; margin: 20px auto;">
+<div style="width: 90%; margin: auto; color:white; margin: 20px;">
 
 	<table class="table" style="color:white;"">
 		<thead>
@@ -27,19 +27,21 @@
 		<tbody>
 			{% for user in users %}
 			<tr>
-				<td>{{ user.username }}</td>
+				<td><a class="btn btn-outline-info" style="width: 150px;" href="#">{{user.username}}</a></td>
 				{% if user.is_active %}
-					<td>Activo</td>
-					{% if user.is_superuser %}
-						<td><a href="#">este usuario no debe desactivarse</a></td>
-					{% else %}
-						<td><a href="activa/d/{{ user.id }}">Desactivar</a></td>
-					{% endif %}
+					<td><a class="btn btn-success" style="width: 110px;" href="#">Activado</a></td>
 				{% else %}
-					<td>No Activo</td>
-					<td><a href="activa/a/{{ user.id }}">Activar</a></td>
+					<td><a class="btn btn-danger" style="width: 110px;" href="#">Desactivado</a></td>
 				{% endif %}
-				<!-- <button type="submit" class="btn btn-success" style="width: 150px;">Registrate</button> -->
+				{% if user.is_superuser %}
+					<td><a class="btn btn-info" style="width: 300px;" href="#">Usuario siempre activo</a></td>
+				{% else %}
+					{% if user.is_active %}
+						<td><a class="btn btn-danger" style="width: 300px;" href="activa/d/{{user.id}}">Desactivar</a></td>
+					{% else %}
+						<td><a class="btn btn-info" style="width: 300px;" href="activa/a/{{user.id}}">Activar</a></td>
+					{% endif %} 
+				{% endif %}
 			</tr>
 			{% endfor %}
 		</tbody>
