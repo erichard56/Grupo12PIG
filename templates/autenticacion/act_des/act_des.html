@@ -34,12 +34,12 @@
 					<td><a class="btn btn-danger" style="width: 110px;" href="#">Desactivado</a></td>
 				{% endif %}
 				{% if user.is_superuser %}
-					<td><a class="btn btn-info" style="width: 300px;" href="#">Usuario siempre activo</a></td>
+					<td><a class="btn btn-info" style="width: 200px;" href="#">Super Usuario</a></td>
 				{% else %}
 					{% if user.is_active %}
-						<td><a class="btn btn-danger" style="width: 300px;" href="activa/d/{{user.id}}">Desactivar</a></td>
+						<td><a class="btn btn-danger" style="width: 200px;" href="activa/d/{{user.id}}">Desactivar</a></td>
 					{% else %}
-						<td><a class="btn btn-info" style="width: 300px;" href="activa/a/{{user.id}}">Activar</a></td>
+						<td><a class="btn btn-info" style="width: 200px;" href="activa/a/{{user.id}}">Activar</a></td>
 					{% endif %} 
 				{% endif %}
 			</tr>
