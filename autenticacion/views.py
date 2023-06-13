@@ -34,7 +34,7 @@ def logear(request):
 			nombre_usuario = form.cleaned_data.get('username')
 			contra = form.cleaned_data.get('password')
 			usuario = authenticate(username = nombre_usuario, password = contra)
-			if (usuario is  not None):
+			if (usuario is not None):
 				login(request, usuario)
 				return redirect('Home')
 			else:

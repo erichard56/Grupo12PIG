@@ -14,6 +14,10 @@ from pathlib import Path
 from django.contrib.messages import constants as mensajes_de_error
 import environ
 import os
+from decouple import config
+# importe decouple porque no funcionaba mi secret key
+from dotenv import load_dotenv
+#importe 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
+# reemplace esto SECRET_KEY = env('SECRET_KEY') por lo que esta arriba ya que no funcionaba
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,14 +96,18 @@ WSGI_APPLICATION = 'pig.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Carga las variables de entorno del archivo .env
+load_dotenv()
+
+#en DATABASES cambio env por config, asi: 'NAME': config('DATABASE_NAME'),etc, etc
 DATABASES = {
     'default': {
 		'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'), 
-        'USER': env('DATABASE_USER'), 
-        'PASSWORD': env('DATABASE_PASSWORD'), 
-        'HOST': env('DATABASE_HOST'), 
-        'PORT': env('DATABASE_PORT'), 
+        'NAME': config('DATABASE_NAME'), 
+        'USER': config('DATABASE_USER'), 
+        'PASSWORD': config('DATABASE_PASSWORD'), 
+        'HOST': config('DATABASE_HOST'), 
+        'PORT': config('DATABASE_PORT'), 
     }
 }
 
