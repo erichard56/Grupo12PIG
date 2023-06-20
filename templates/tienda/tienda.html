@@ -8,7 +8,7 @@
 		{% if request.user.is_authenticated %}
 			{% include '../tienda/carro/widget.html' %}
 		{% else %}
-			<div class="alert alert-danger text-center">Login para ver Carro</div>
+			<a href="{% url 'logear' %}" class="btn btn-danger">Login para comenzar la Compra</a>
 		{% endif %}
 	</div>
 
