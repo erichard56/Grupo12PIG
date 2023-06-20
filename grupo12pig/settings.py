@@ -46,14 +46,16 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
 	'grupo12pig',
-    'servicios',
-    'blog',
-    'contacto',
-    'tienda',
-    'carro',
+    'api_pig12',
     'autenticacion',
+    'blog',
+    'carro',
+    'contacto',
     'pedidos',
+    'servicios',
+    'tienda',
     'fontawesomefree',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
