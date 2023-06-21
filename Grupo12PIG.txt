@@ -16,10 +16,10 @@ El PIG deberá ser un sitio web con temática a elección, orientado a la gesti�
 no pudiendo realizarse de manera individual.
 Grupo: 
 
-Gebecke		Matias Nicolas		matgebe@gmail.com
-Morales		Johana				johanamorales947@gmail.com
-Gonzalez	Oliva	Agustina	agusgonzalezoliva@gmail.com
-Richard		Enrique				enrique.richard@gmail.com
+Gebecke, Matias Nicolas		matgebe@gmail.com
+Morales, Johana				johanamorales947@gmail.com
+Gonzalez, Oliva Agustina	agusgonzalezoliva@gmail.com
+Richard, Enrique			enrique.richard@gmail.com
 
 
 ● El PIG debe subirse a un repositorio GIT público en la nube.
@@ -37,20 +37,20 @@ Ok
 ● Debe existir al menos una vista parametrizada.
 Blog 
 
-urlpatterns = [
-	path('', views.blog, name='Blog'),
-	path('categoria/<int:categoria_id>/', views.categoria, name='categoria'),
-	path('newpost/', views.newpost, name='newpost'),
-]
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+	urlpatterns = [
+		path('', views.blog, name='Blog'),
+		path('categoria/<int:categoria_id>/', views.categoria, name='categoria'),
+		path('newpost/', views.newpost, name='newpost'),
+	]
+	urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 ● Se deben utilizar templates que cumplan con las siguientes características:
 
 • Debe haber al menos un template asociado a una vista.
-autenticacion.views.py
+autenticacion->views.py
 
 • Debe existir al menos una relación de herencia entre los templates.
-templates/pig/base.html
+templates/grupo12PIG/base.html
 
 • Debe existir al menos un filtro aplicado.
 templates/autorizacion/login.html 
@@ -58,19 +58,19 @@ templates/autorizacion/login.html
 						{{ form|crispy }}
 					</table>
 
-
 • Debe existir al menos un template que utilice archivos estáticos (js, css, etc).
 				<div class="col-md-4">
 					<img src="{{ servicio.imagen.url }}" class="card-img" alt="..." style="width:60%;">
 				</div>
 
 ● Se deben utilizar Django Forms que cumplan con las siguientes características:
+
 • Al menos un formulario debe poseer validaciones en el front-end y en el back-end
-contacto.forms.py usa validators
-autorizacion.views.py
+contacto->forms.py usa validators
+autorizacion->views.py
 
 • Debe haber al menos un formulario asociado a un template.
-formulario: blog.forms.py, template: newpost.html
+formulario: blog->forms.py, template: newpost.html
 
 • Debe haber al menos un formulario basado en clases.
 
